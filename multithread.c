@@ -4,7 +4,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<pthread.h>
-int i;
+int i,min,max;
+float average = 0;
 
 typedef struct datastruct
 {
@@ -19,14 +20,12 @@ void *avg_thread(void *ptr)
     copy = (datastruct *) ptr;
 
 	int count = copy->size;
-	float average = 0;
 
 	for(i=0 ;i<count ;i++)
 		{
 			average =average + copy->values[i];
 		}
 	average=average/count;
-	printf("The average value is:%f\n",average);
 }
 
 //Minimum calculating thread
@@ -35,7 +34,8 @@ void *min_thread(void *ptr)
 	datastruct * copy;
     copy = (datastruct *) ptr;
 
-	int count = copy->size, min = copy->values[0];
+	int count = copy->size;
+	min = copy->values[0];
 	
 	for(int i=1;i<count;i++)
 		{
@@ -44,7 +44,6 @@ void *min_thread(void *ptr)
 				min = copy->values[i];
 			}
 		}
-	printf("The Minimum  value is:%d\n",min);
 
 }
 
@@ -54,7 +53,8 @@ void *max_thread(void *ptr)
 	datastruct * copy;
     copy = (datastruct *) ptr;
 
-	int count = copy->size, max = copy->values[0];
+	int count = copy->size;
+	max = copy->values[0];
 
 	for(int i=1;i<count;i++)
 		{
@@ -63,7 +63,6 @@ void *max_thread(void *ptr)
 				max = copy->values[i];
 			}
 		}
-	printf("The Maximum  value is:%d\n",max);
 	}
 
 
@@ -102,16 +101,20 @@ pthread_t thread1,thread2,thread3;
     	{
         	fprintf(stderr,"Error - pthread_create() return code: %d\n", t3);
         	exit(EXIT_FAILURE);
-    	}	
-
-	pthread_join(thread1,NULL);
-	pthread_join(thread2,NULL);
-	pthread_join(thread3,NULL);
-	
+    	}
+		
 	printf("pthread_create() for Thread 1 returns: %d\n",t1);
 	printf("pthread_create() for Thread 2 returns: %d\n",t2);
 	printf("pthread_create() for Thread 3 returns: %d\n",t3);
 
+	pthread_join(thread1,NULL);
+	pthread_join(thread2,NULL);
+	pthread_join(thread3,NULL);
+
+	printf("The average value is %f\n",average);
+	printf("The minimum value is %d\n",min);
+	printf("The maximum value is %d\n",max);
+	
 	exit(EXIT_SUCCESS);
 	
 }
