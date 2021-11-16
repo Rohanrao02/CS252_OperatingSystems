@@ -1,3 +1,6 @@
+/*This program creates multithreads to calculate average,maximum
+	and minimum for a given list of numbers*/
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<pthread.h>
@@ -9,6 +12,7 @@ typedef struct datastruct
     int * values;
 }datastruct;
 
+//Avg calculating thread
 void *avg_thread(void *ptr)
 {
 	datastruct * copy;
@@ -24,6 +28,8 @@ void *avg_thread(void *ptr)
 	average=average/count;
 	printf("The average value is:%f\n",average);
 }
+
+//Minimum calculating thread
 void *min_thread(void *ptr)
 {
 	datastruct * copy;
@@ -41,6 +47,8 @@ void *min_thread(void *ptr)
 	printf("The Minimum  value is:%d\n",min);
 
 }
+
+//Maximum calculating thread
 void *max_thread(void *ptr)
 {
 	datastruct * copy;
@@ -57,6 +65,8 @@ void *max_thread(void *ptr)
 		}
 	printf("The Maximum  value is:%d\n",max);
 	}
+
+
 int main()
 {
 int count,i,arr[50],t1,t2,t3;
@@ -73,18 +83,21 @@ pthread_t thread1,thread2,thread3;
 	datastruct ds = {count, arr};
 	
 	t1=pthread_create(&thread1,NULL,(void *)avg_thread,(void *)&ds);
+	//Checking the creation of the thread 1
 	if(t1)
     {
         fprintf(stderr,"Error - pthread_create() return code: %d\n", t1);
         exit(EXIT_FAILURE);
     }
 	t2=pthread_create(&thread2,NULL,(void *)min_thread,(void *)&ds);
+	//Checking the creation of the thread 2
 	if(t2)
     {
         fprintf(stderr,"Error - pthread_create() return code: %d\n", t2);
         exit(EXIT_FAILURE);
     }
 	t3=pthread_create(&thread3,NULL,(void *)max_thread,(void *)&ds);
+	//Checking the creation of the thread 3
 	if(t3)
     {
         fprintf(stderr,"Error - pthread_create() return code: %d\n", t3);
@@ -98,5 +111,7 @@ pthread_t thread1,thread2,thread3;
 	printf("pthread_create() for Thread 1 returns: %d\n",t1);
     printf("pthread_create() for Thread 2 returns: %d\n",t2);
     printf("pthread_create() for Thread 3 returns: %d\n",t3);
+
+	exit(EXIT_SUCCESS);
 	
 }
