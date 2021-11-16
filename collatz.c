@@ -1,3 +1,6 @@
+/* This program generates collatz sequence in the child process 
+using fork() system call.*/
+
 #include <stdio.h>
 #include <sys/types.h>
 #include <unistd.h>
@@ -43,7 +46,7 @@ int main()
 		else
 		{
 			printf("Parents is waiting on child process...\n");
-			wait(&pid);
+			wait(&pid);						
 			printf("Parent process is done.\n");
 		}
 	return 0; 
