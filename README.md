@@ -32,6 +32,8 @@ Output from the code:
 
 *Pthread* api is really useful tool while working on thread creation and synchronization.While executing in terminal, one must add *-lpthread* to ensure the pthread library to be linked.
 
-
-
+### **References**:
+- [Sean Seatz : Github Repo](https://github.com/SeanStaz)
+- Operating System Concepts : Tenth Edition 
+        - Silberschatz, Abraham, author. | Galvin, Peter B., author. | Gagne, Greg, author. 
 
