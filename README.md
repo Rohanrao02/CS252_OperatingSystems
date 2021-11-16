@@ -15,7 +15,7 @@ In this program,we use *fork()* function creates a child process that runs concu
 ### **Result**:
 Output from the code:
 
-<img src="/Results/collatz.png" alt="Collatz Conjucture code" style="height: 100px; width:100px;"/>
+<img src="/Results/collatz.png" alt="Collatz Conjucture code" />
 
 Here, the *fork()* system call only operates in Linux based operating system. To run the code in Windows OS, one might have to install MinGW (GCC compiler) and select appropriate packages/header files or might use some online compilers.
 
@@ -28,7 +28,7 @@ In this code, we use function *pthread_create()* which creates a new thread in t
 ### **Results**:
 Output from the code:
 
-<img src="/Results/multithread.png" alt="Multithreading code" style="height: 100px; width:100px;"/>
+<img src="/Results/multithread.png" alt="Multithreading code"/>
 
 *Pthread* api is really useful tool while working on thread creation and synchronization.While executing in terminal, one must add *-lpthread* to ensure the pthread library to be linked.
 
