@@ -85,32 +85,32 @@ pthread_t thread1,thread2,thread3;
 	t1=pthread_create(&thread1,NULL,(void *)avg_thread,(void *)&ds);
 	//Checking the creation of the thread 1
 	if(t1)
-    {
-        fprintf(stderr,"Error - pthread_create() return code: %d\n", t1);
-        exit(EXIT_FAILURE);
-    }
+    	{
+        	fprintf(stderr,"Error - pthread_create() return code: %d\n", t1);
+     		exit(EXIT_FAILURE);
+    	}
 	t2=pthread_create(&thread2,NULL,(void *)min_thread,(void *)&ds);
 	//Checking the creation of the thread 2
 	if(t2)
-    {
-        fprintf(stderr,"Error - pthread_create() return code: %d\n", t2);
-        exit(EXIT_FAILURE);
-    }
+    	{
+        	fprintf(stderr,"Error - pthread_create() return code: %d\n", t2);
+        	exit(EXIT_FAILURE);
+    	}
 	t3=pthread_create(&thread3,NULL,(void *)max_thread,(void *)&ds);
 	//Checking the creation of the thread 3
 	if(t3)
-    {
-        fprintf(stderr,"Error - pthread_create() return code: %d\n", t3);
-        exit(EXIT_FAILURE);
-    }
+    	{
+        	fprintf(stderr,"Error - pthread_create() return code: %d\n", t3);
+        	exit(EXIT_FAILURE);
+    	}	
 
 	pthread_join(thread1,NULL);
 	pthread_join(thread2,NULL);
-    pthread_join(thread3,NULL);
-
+	pthread_join(thread3,NULL);
+	
 	printf("pthread_create() for Thread 1 returns: %d\n",t1);
-    printf("pthread_create() for Thread 2 returns: %d\n",t2);
-    printf("pthread_create() for Thread 3 returns: %d\n",t3);
+	printf("pthread_create() for Thread 2 returns: %d\n",t2);
+	printf("pthread_create() for Thread 3 returns: %d\n",t3);
 
 	exit(EXIT_SUCCESS);
 	
